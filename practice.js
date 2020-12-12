@@ -15,17 +15,19 @@
 
 */
 
-function count(num){
-    // Code here
-};
+function count(num) {
+  // Code here
 
+  return function () {
+    num++;
+    return num;
+  };
+}
 
 // Do not edit the code below.
 var newClosure = count(5);
 
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 2 //////////
 /* 
@@ -38,18 +40,19 @@ var newClosure = count(5);
   greetingClosure('Hello')
   
 */
- 
-// Code here
-    
-    
 
+// Code here
+
+function greeting(name) {
+  return function (word) {
+    return `${word} ${name}`;
+  };
+}
 
 // After you have created the greeting function above, uncomment the code below, but do not edit it
 
-// const greetingClosure = greeting('Henry');
-// let greet = greetingClosure('Hello')
-    
-
+const greetingClosure = greeting("Henry");
+let greet = greetingClosure("Hello");
 
 ////////// PROBLEM 3 //////////
 /* 
@@ -64,8 +67,24 @@ var newClosure = count(5);
 */
 
 // Code here
+function calculatorCreator() {
+  let num = 0;
 
-
+  return {
+    add: (number) => {
+      return (num += number);
+    },
+    subtract: (number) => {
+      return (num -= number);
+    },
+    multiply: (number) => {
+      return (num *= number);
+    },
+    divide: (number) => {
+      return (num /= number);
+    },
+  };
+}
 
 ////////// PROBLEM 4 //////////
 /* 
@@ -75,8 +94,13 @@ var newClosure = count(5);
 */
 
 // Code here
-
-
+class Puppy {
+  constructor(happiness, energy, behavior) {
+    this.happiness = happiness;
+    this.energy = energy;
+    this.behavior = behavior;
+  }
+}
 
 ////////// PROBLEM 5 //////////
 /* 
@@ -88,8 +112,19 @@ var newClosure = count(5);
 */
 
 // Code here
+class Car {
+  constructor(manufacturer, year) {
+    this.manufacturer = manufacturer;
+    this.year = year;
+  }
+  displayManufacturer() {
+    return this.manufacturer;
+  }
 
-
+  displayYear() {
+    return this.year;
+  }
+}
 
 ////////// PROBLEM 6 //////////
 /* 
@@ -103,3 +138,21 @@ var newClosure = count(5);
 */
 
 // Code here
+
+class Panda extends Puppy {
+  constructor(happiness, energy, behavior) {
+    super(happiness, energy, behavior);
+    this.happiness = happiness;
+    this.energy = energy;
+    this.behavior = behavior;
+  }
+
+  getsTreat() {
+    return (this.happiness += 20);
+  }
+
+  takesNap() {
+    this.energy -= 45;
+    this.behavior += 15;
+  }
+}
